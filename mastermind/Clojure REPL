@@ -1,0 +1,160 @@
+REPL Instructions
+
+Code can be entered at the bottom and executed by pressing shift+enter.
+
+Try it now by typing (+ 1 1) in the bottom section and pressing shift+enter.
+
+Working in another Clojure file and sending forms to the REPL is the most efficient way to work. Use the following key bindings to send code to the REPL. See the settings for more keybindings.
+
+ctrl-alt-, then b
+Execute block. Finds the block of Clojure code your cursor is in and executes that.
+
+ctrl-alt-, s
+Executes the selection. Sends the selected text to the REPL.
+
+You can disable this help text in the settings.
+Atom Ink does not appear to be installed. Install it to get a better REPL experience.
+Starting REPL with lein in /home/adrien/Documents/3I020/MastermindApp/mastermind
+#error {
+ :cause java.lang.Long cannot be cast to clojure.lang.IFn
+ :via
+ [{:type clojure.lang.Compiler$CompilerException
+   :message Syntax error compiling at (mastermind/util.clj:139:1).
+   :data #:clojure.error{:phase :compile-syntax-check, :line 139, :column 1, :source mastermind/util.clj}
+   :at [clojure.lang.Compiler load Compiler.java 7647]}
+  {:type java.lang.ClassCastException
+   :message java.lang.Long cannot be cast to clojure.lang.IFn
+   :at [mastermind.util$build_answer invokeStatic util.clj 132]}]
+ :trace
+ [[mastermind.util$build_answer invokeStatic util.clj 132]
+  [mastermind.util$build_answer invoke util.clj 129]
+  [mastermind.util$eval177 invokeStatic util.clj 139]
+  [mastermind.util$eval177 invoke util.clj 139]
+  [clojure.lang.Compiler eval Compiler.java 7176]
+  [clojure.lang.Compiler load Compiler.java 7635]
+  [clojure.lang.RT loadResourceScript RT.java 381]
+  [clojure.lang.RT loadResourceScript RT.java 372]
+  [clojure.lang.RT load RT.java 463]
+  [clojure.lang.RT load RT.java 428]
+  [clojur
+e.core$load$fn__6824 invoke core.clj 6126]
+  [clojure.core$load invokeStatic core.clj 6125]
+  [clojure.core$load doInvoke core.clj 6109]
+  [clojure.lang.RestFn invoke RestFn.java 408]
+  [clojure.core$load_one invokeStatic core.clj 5908]
+  [clojure.core$load_one invoke core.clj 5903]
+  [clojure.core$load_lib$fn__6765 invoke core.clj 5948]
+  [clojure.core$load_lib invokeStatic core.clj 5947]
+  [clojure.core$load_lib doInvoke core.clj 5928]
+  [clojure.lang.RestFn applyTo RestFn.java 142]
+  [clojure.core$apply invokeStatic core.clj 667]
+  [clojure.core$load_libs invokeStatic core.clj 5985]
+  [clojure.core$load_libs doInvoke core.clj 5969]
+  [clojure.lang.RestFn applyTo RestFn.java 137]
+  [clojure.core$apply invokeStatic core.clj 667]
+  [clojure.core$require invokeStatic core.clj 6007]
+  [clojure.core$require doInvoke core.clj 6007]
+  [clojure.lang.RestFn invoke RestFn.java 408]
+  [mastermind.core$eval149$loading__6706__auto____150 invoke core.clj 1]
+  [mastermind.core$eval149 invokeStatic core.clj 1]
+  [mastermind.core$eval149 invoke core.clj 1]
+  [clojure.lang.Compiler eval Compiler.java 7176]
+  [clojure.lang.Compiler eval Compiler.java 7165]
+  [clojure.lang.Compiler load Compiler.java 7635]
+  [clojure.lang.RT loadResourceScript RT.java 381]
+  [clojure.lang.RT loadResourceScript RT.java 372]
+  [clojure.lang.RT load RT.java 463]
+  [clojure.lang.RT load RT.java 428]
+  [clojure.core$load$fn__6824 invoke core.clj 6126]
+  [clojure.core$load invokeStatic core.clj 6125]
+  [clojure.core$load doInvoke core.clj 6109]
+  [clojure.lang.RestFn invoke RestFn.java 408]
+  [clojure.core$load_one invokeStatic core.clj 5908]
+  [clojure.core$load_one invoke core.clj 5903]
+  [clojure.core$load_lib$fn__6765 invoke core.clj 5948]
+  [clojure.core$load_lib invokeStatic core.clj 5947]
+  [clojure.core$load_lib doInvoke core.clj 5928]
+  [clojure.lang.RestFn applyTo RestFn.java 142]
+  [clojure.core$apply invokeStatic core.clj 667]
+  [clojure.core$load_libs invokeStatic core.clj 5985]
+  [clojure.core$load_libs doInvoke core.clj 5969]
+  [clojure.lang.RestFn applyTo RestFn.java 137]
+  [clojure.core$apply invokeStatic core.clj 667]
+  [clojure.core$require invokeStatic core.clj 6007]
+  [clojure.core$require doInvoke core.clj 6007]
+  [clojure.lang.RestFn invoke RestFn.java 408]
+  [user$eval5 invokeStatic form-init2420995891880741184.clj 1]
+  [user$eval5 invoke form-init2420995891880741184.clj 1]
+  [clojure.lang.Compiler eval Compiler.java 7176]
+  [clojure.lang.Compiler eval Compiler.java 7165]
+  [clojure.lang.Compiler eval Compiler.java 7165]
+  [clojure.lang.Compiler load Compiler.java 7635]
+  [clojure.lang.Compiler loadFile Compiler.java 7573]
+  [clojure.main$load_script invokeStatic main.clj 452]
+  [clojure.main$init_opt invokeStatic main.clj 454]
+  [clojure.main$init_opt invoke main.clj 454]
+  [clojure.main$initialize invokeStatic main.clj 485]
+  [clojure.main$null_opt invokeStatic main.clj 519]
+  [clojure.main$null_opt invoke main.clj 516]
+  [clojure.main$main invokeStatic main.clj 598]
+  [clojure.main$main doInvoke main.clj 561]
+  [clojure.lang.RestFn applyTo RestFn.java 137]
+  [clojure.lang.Var applyTo Var.java 705]
+  [clojure.main main main.java 37]]}
+nREPL server started on port 40195 on host 127.0.0.1 - nrepl://127.0.0.1:40195
+Refreshing code...
+No user namespace defined. Defaulting to clojure.tools.namespace.repl/refresh.
+
+clojure.tools.namespace.repl not available. Add proto-repl in your project.clj as a dependency to allow refresh. See https://clojars.org/proto-repl
+Refresh Warning: Execution error (IllegalArgumentException) at user/eval1478 (form-init2420995891880741184.clj:1).
+No such namespace: clojure.tools.namespace.repl
+Refresh Warning: Execution error (IllegalArgumentException) at user/eval1478 (form-init2420995891880741184.clj:1).
+No such namespace: clojure.tools.namespace.repl
+(defn build-answer
+ [taille_code indicat_vector rep_vector next_color]
+ (loop [i 0 , res []]
+  (if (i < taille_code)
+    (recur (inc i) (conj res (cond
+                              (= (get indicat_vector i) :good) (get rep_vector i)
+                               :else next_color)))
+    res)))
+user=>
+#'user/build-answer
+(build-answer 4 [:good :color :bad :bad] [:rouge :jaune :vert :bleu] :blanc)
+Execution error (ClassCastException) at user/build-answer (form-init2420995891880741184.clj:132).
+java.lang.Long cannot be cast to clojure.lang.IFn
+(defn build-answer
+ [taille_code indicat_vector rep_vector next_color]
+ (loop [i 0 , res []]
+  (if (< i taille_code)
+    (recur (inc i) (conj res (cond
+                              (= (get indicat_vector i) :good) (get rep_vector i)
+                              :else next_color)))
+    res)))
+user=>
+#'user/build-answer
+(build-answer 4 [:good :color :bad :bad] [:rouge :jaune :vert :bleu] :blanc)
+user=>
+[:rouge :blanc :blanc :blanc]
+REPL already running
+(defn build-answer
+ [taille_code indicat_vector rep_vector next_color]
+ (loop [i 0 , res []]
+  (if (< i taille_code)
+    (recur (inc i) (conj res (cond
+                              (= (get indicat_vector i) :good) (get rep_vector i)
+                              :else next_color)))
+    res)))
+user=>
+#'user/build-answer
+(build-answer 4 [:good :color :bad :bad] [:rouge :jaune :vert :bleu] :blanc)
+user=>
+[:rouge :blanc :blanc :blanc]
+(build-answer 4 [:good :color :bad :bad] [:rouge :jaune :vert :bleu] nil)
+user=>
+[:rouge nil nil nil]
+(build-answer 4 [:good :color :bad :good] [:rouge :jaune :vert :bleu] :noir)
+user=>
+[:rouge :noir :noir :bleu]
+--------------------
+(build-answer 4 [:good :good :good :good] [:rouge :jaune :vert :bleu] :noir)

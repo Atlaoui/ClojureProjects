@@ -1,0 +1,971 @@
+REPL Instructions
+
+Code can be entered at the bottom and executed by pressing shift+enter.
+
+Try it now by typing (+ 1 1) in the bottom section and pressing shift+enter.
+
+Working in another Clojure file and sending forms to the REPL is the most efficient way to work. Use the following key bindings to send code to the REPL. See the settings for more keybindings.
+
+ctrl-alt-, then b
+Execute block. Finds the block of Clojure code your cursor is in and executes that.
+
+ctrl-alt-, s
+Executes the selection. Sends the selected text to the REPL.
+
+You can disable this help text in the settings.
+Atom Ink does not appear to be installed. Install it to get a better REPL experience.
+Starting REPL with lein in /home/adrien/Documents/3I020/GrapheProj/graphcljskel-master
+#error {
+ :cause clojure.set
+ :via
+ [{:type clojure.lang.Compiler$CompilerException
+   :message java.lang.ClassNotFoundException: clojure.set, compiling:(graphclj/graph.clj:21:26)
+   :at [clojure.lang.Compiler analyzeSeq Compiler.java 7010]}
+  {:type java.lang.ClassNotFoundException
+   :message clojure.set
+   :at [java.net.URLClassLoader findClass URLClassLoader.java 382]}]
+ :trace
+ [[java.net.URLClassLoader findClass URLClassLoader.java 382]
+  [clojure.lang.DynamicClassLoader findClass DynamicClassLoader.java 69]
+  [java.lang.ClassLoader loadClass ClassLoader.java 424]
+  [clojure.lang.DynamicClassLoader loadClass DynamicClassLoader.java 77]
+  [java.lang.ClassLoader loadClass ClassLoader.java 357]
+  [java.lang.Class forName0 Class.java -2]
+  [java.lang.Class forName Class.java 348]
+  [clojure.lang.RT classForName RT.java 2204]
+  [clojure.lang.RT classForNameNonLoading RT.java 2217]
+  [clojure.lang.Compiler$HostExpr maybeClass Compiler.java 1041]
+  [clojure.lang.Compiler macroexpand1 Compiler.java 6942]
+  [clojure.lang.Compiler analyzeSeq Compiler.java 6989]
+  [clojure.lang.Compiler analyze Compiler.java 6773]
+  [clojure.lang.Compiler analyze Compiler.java 6729]
+  [clojure.lang.Compiler$MapExpr parse Compiler.java 3097]
+  [clojure.lang.Compiler analyze Compiler.java 6781]
+  [clojure.lang.Compiler analyze Compiler.java 6729]
+  [clojure.lang.Compiler$MapExpr parse Compiler.java 3097]
+  [clojure.lang.Compiler analyze Compiler.java 6781]
+  [clojure.lang.Compiler analyze Compiler.java 6729]
+  [clojure.lang.Compiler$IfExpr$Parser parse Compiler.java 2830]
+  [clojure.lang.Compiler analyzeSeq Compiler.java 7003]
+  [clojure.lang.Compiler analyze Compiler.java 6773]
+  [clojure.lang.Compiler analyze Compiler.java 6729]
+  [clojure.lang.Compiler$BodyExpr$Parser parse Compiler.java 6100]
+  [clojure.lang.Compiler$LetExpr$Parser parse Compiler.java 6420]
+  [clojure.lang.Compiler analyzeSeq Compiler.java 7003]
+  [clojure.lang.Compiler analyze Compiler.java 6773]
+  [clojure.lang.Compiler analyzeSeq Compiler.java 6991]
+  [clojure.lang.Compiler analyze Compiler.java 6773]
+  [clojure.lang.Compiler analyze Compiler.java 6729]
+  [clojure.lang.Compiler$BodyExpr$Parser parse Compiler.java 6100]
+  [clojure.lang.Compiler$FnMethod parse Compiler.java 5460]
+  [clojure.lang.Compiler$FnExpr parse Compiler.java 4022]
+  [clojure.lang.Compiler analyzeSeq Compiler.java 7001]
+  [clojure.lang.Compiler analyze Compiler.java 6773]
+  [clojure.lang.Compiler analyzeSeq Compiler.java 6991]
+  [clojure.lang.Compiler analyze Compiler.java 6773]
+  [clojure.lang.Compiler access$300 Compiler.java 38]
+  [clojure.lang.Compiler$DefExpr$Parser parse Compiler.java 595]
+  [clojure.lang.Compiler analyzeSeq Compiler.java 7003]
+  [clojure.lang.Compiler analyze Compiler.java 6773]
+  [clojure.lang.Compiler analyze Compiler.java 6729]
+  [clojure.lang.Compiler eval Compiler.java 7066]
+  [clojure.lang.Compiler load Compiler.java 7514]
+  [clojure.lang.RT loadResourceScript RT.java 379]
+  [clojure.lang.RT loadResourceScript RT.java 370]
+  [clojure.lang.RT load RT.java 460]
+  [clojure.lang.RT load RT.java 426]
+  [clojure.core$load$fn__6548 invoke core.clj 6046]
+  [clojure.core$load invokeStatic core.clj 6045]
+  [clojure.core$load doInvoke core.clj 6029]
+  [clojure.lang.RestFn invoke RestFn.java 408]
+  [clojure.core$load_one invokeStatic core.clj 5848]
+  [clojure.core$load_one invoke core.clj 5843]
+  [clojure.core$load_lib$fn__6493 invoke core.clj 5888]
+  [clojure.core$load_lib invokeStatic core.clj 5887]
+  [clojure.core$load_lib doInvoke core.clj 5868]
+  [clojure.lang.RestFn applyTo RestFn.java 142]
+  [clojure.core$apply invokeStatic core.clj 659]
+  [clojure.core$load_libs invokeStatic core.clj 5925]
+  [clojure.core$load_libs doInvoke core.clj 5909]
+  [clojure.lang.RestFn applyTo RestFn.java 137]
+  [clojure.core$apply invokeStatic core.clj 659]
+  [clojure.core$require invokeStatic core.clj 5947]
+  [clojure.core$require doInvoke core.clj 5947]
+  [clojure.lang.RestFn invoke RestFn.java 436]
+  [graphclj.core$eval158$loading__6434__auto____159 invoke core.clj 1]
+  [graphclj.core$eval158 invokeStatic core.clj 1]
+  [graphclj.core$eval158 invoke core.clj 1]
+  [clojure.lang.Compiler eval Compiler.java 7062]
+  [clojure.lang.Compiler eval Compiler.java 7051]
+  [clojure.lang.Compiler load Compiler.java 7514]
+  [clojure.lang.RT loadResourceScript RT.java 379]
+  [clojure.lang.RT loadResourceScript RT.java 370]
+  [clojure.lang.RT load RT.java 460]
+  [clojure.lang.RT load RT.java 426]
+  [clojure.core$load$fn__6548 invoke core.clj 6046]
+  [clojure.core$load invokeStatic core.clj 6045]
+  [clojure.core$load doInvoke core.clj 6029]
+  [clojure.lang.RestFn invoke RestFn.java 408]
+  [clojure.core$load_one invokeStatic core.clj 5848]
+  [clojure.core$load_one invoke core.clj 5843]
+  [clojure.core$load_lib$fn__6493 invoke core.clj 5888]
+  [clojure.core$load_lib invokeStatic core.clj 5887]
+  [clojure.core$load_lib doInvoke core.clj 5868]
+  [clojure.lang.RestFn applyTo RestFn.java 142]
+  [clojure.core$apply invokeStatic core.clj 659]
+  [clojure.core$load_libs invokeStatic core.clj 5925]
+  [clojure.core$load_libs doInvoke core.clj 5909]
+  [clojure.lang.RestFn applyTo RestFn.java 137]
+  [clojure.core$apply invokeStatic core.clj 659]
+  [clojure.core$require invokeStatic core.clj 5947]
+  [clojure.core$require doInvoke core.clj 5947]
+  [clojure.lang.RestFn invoke RestFn.java 408]
+  [user$eval15 invokeStatic form-init7220369818718827885.clj 1]
+  [user$eval15 invoke form-init7220369818718827885.clj 1]
+  [clojure.lang.Compiler eval Compiler.java 7062]
+  [clojure.lang.Compiler eval Compiler.java 7051]
+  [clojure.lang.Compiler eval Compiler.java 7051]
+  [clojure.lang.Compiler load Compiler.java 7514]
+  [clojure.lang.Compiler loadFile Compiler.java 7452]
+  [clojure.main$load_script invokeStatic main.clj 278]
+  [clojure.main$init_opt invokeStatic main.clj 280]
+  [clojure.main$init_opt invoke main.clj 280]
+  [clojure.main$initialize invokeStatic main.clj 311]
+  [clojure.main$null_opt invokeStatic main.clj 345]
+  [clojure.main$null_opt invoke main.clj 342]
+  [clojure.main$main invokeStatic main.clj 424]
+  [clojure.main$main doInvoke m
+ain.clj 387]
+  [clojure.lang.RestFn applyTo RestFn.java 137]
+  [clojure.lang.Var applyTo Var.java 702]
+  [clojure.main main main.java 37]]}
+nREPL server started on port 39233 on host 127.0.0.1 - nrepl://127.0.0.1:39233
+Refreshing code...
+No user namespace defined. Defaulting to clojure.tools.namespace.repl/refresh.
+
+clojure.tools.namespace.repl not available. Add proto-repl in your project.clj as a dependency to allow refresh. See https://clojars.org/proto-repl
+Refresh Warning: IllegalArgumentException No such namespace: clojure.tools.namespace.repl  clojure.lang.Var.find (Var.java:143)
+Refresh Warning: IllegalArgumentException No such namespace: clojure.tools.namespace.repl  clojure.lang.Var.find (Var.java:143)
+(def graph {0 {:neigh #{1 3}, :close 3.5, :rank 2}, 1 {:neigh #{0 4 3}, :close 4.0},
+                2 {:neigh #{3}, :close 2.8333333333333335},
+                3 {:neigh #{0 1 2}, :close 4.0},
+                4 {:neigh #{1}, :close 2.8333333333333335}})
+user=>
+#'user/graph
+(defn neighbors-direct?
+  [graph pos base]
+  (contains? (find-neighbors pos graph) base))
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: find-neighbors in this context, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:78:14) 
+(defn find-neighbors
+  "retourn les voisins d un noeud"
+  [v coll]
+  (apply sorted-set (get-in coll [v :neigh])))
+user=>
+#'user/find-neighbors
+(defn visited?
+  "verifie si l'elements a deja était visiter"
+  [v coll]
+  (some #(= % v) coll))
+user=>
+#'user/visited?
+(defn neighbors-direct?
+  [graph pos base]
+  (contains? (find-neighbors pos graph) base))
+user=>
+#'user/neighbors-direct?
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 0 lastN (count (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt (+ lastN (count (find-neighbors v graph))))
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= (count visited) (* -1 (- 1 lastN)))
+                                                                             (inc cpt)
+                                                                             cpt) lastN))))))
+user=>
+#'user/graph-bfs
+(apply sorted-set #{4 9 8})
+user=>
+#{4 8 9}
+(last (apply sorted-set #{4 9 8}))
+user=>
+9
+(last (apply sorted-set #{4 9 8}))
+user=>
+9
+(last (apply sorted-set #{4 9 8}))
+user=>
+9
+(last (apply sorted-set #{4 9 8}))
+user=>
+9
+(last (apply sorted-set #{4 9 8}))
+user=>
+9
+(last (apply sorted-set #{4 9 8 7}))
+user=>
+9
+(last (apply sorted-set #{4 9 8 7 3}))
+user=>
+9
+(last (apply sorted-set #{4 9 8 7 3 10}))
+user=>
+10
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 0 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt (+ lastN (count (find-neighbors v graph))))
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                             (inc cpt)
+                                                                             cpt) (if (= v lastN)
+                                                                                    lastN (last (find-neighbors v graph))
+                                                                                   lastN)))))))
+CompilerException java.lang.RuntimeException: Too many arguments to if, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:129:83) 
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 0 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                             (inc cpt)
+                                                                             cpt) (if (= v lastN)
+                                                                                    lastN (last (find-neighbors v graph))
+                                                                                   lastN)))))))
+CompilerException java.lang.RuntimeException: Too many arguments to if, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:129:83) 
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 0 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                             (inc cpt)
+                                                                             cpt) (if (= v lastN)
+                                                                                    lastN (last (find-neighbors v graph))
+                                                                                   lastN)))))))
+CompilerException java.lang.RuntimeException: Too many arguments to if, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:129:83) 
+This command requires you to position the cursor on a Clojure var.
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 0 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                             (inc cpt)
+                                                                             cpt) (if (= v lastN)
+                                                                                    lastN (last (find-neighbors v graph))
+                                                                                   lastN)))))))
+CompilerException java.lang.RuntimeException: Too many arguments to if, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:129:83) 
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 0 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                             (inc cpt)
+                                                                            cpt) (if (= v lastN)
+                                                                                    lastN (last (find-neighbors v graph))
+                                                                                   lastN)))))))
+CompilerException java.lang.RuntimeException: Too many arguments to if, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:129:82) 
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 0 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                             (inc cpt)
+                                                                            cpt) (cond
+                                                                                   (= v lastN) lastN (last (find-neighbors v graph))
+                                                                                    :else lastN)))))))
+CompilerException java.lang.IllegalArgumentException: cond requires an even number of forms, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:129:82) 
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 0 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (cond
+                                                                             (= v lastN) (inc cpt)
+                                                                             :else cpt) (cond)
+                                                                                   (= v lastN) lastN (last (find-neighbors v graph))
+                                                                                    :else lastN))))))
+CompilerException java.lang.IllegalArgumentException: Mismatched argument count to recur, expected: 5 args, got: 10, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:127:13) 
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 0 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (cond
+                                                                             (= v lastN) (inc cpt)
+                                                                             :else cpt) (cond
+                                                                                          (= v lastN) lastN (last (find-neighbors v graph))
+                                                                                           :else lastN)))))))
+CompilerException java.lang.IllegalArgumentException: cond requires an even number of forms, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:129:89) 
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 0 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)             (if (= v lastN)
+                                                                                                (last (find-neighbors v graph))
+                                                                                               lastN)))))))
+user=>
+#'user/graph-bfs
+(let
+ [g {1 {:neigh #{0 4 3}},
+     0 {:neigh #{1 3}},
+     3 {:neigh #{0 1 2}},
+     4 {:neigh #{1}},
+     2 {:neigh #{3}}}]
+ (graph-bfs g 4))
+4 [] 0 0 {4 0.0} 1 1 #{1}
+1 [4] 1 0 {4 0.0} 1 1 #{0 3 4}
+0 [4 1] 2 1 {1 0.0, 4 0.0} 4 2 #{1 3}
+3 [4 1 0] 3 1 {0 1.0, 1 0.0, 4 0.0} 4 2 #{0 1 2}
+3 [4 1 0 3] 4 1 {3 1.0, 0 1.0, 1 0.0, 4 0.0} 4 2 #{0 1 2}
+2 [4 1 0 3] 4 1 {3 1.0, 0 1.0, 1 0.0, 4 0.0} 4 2 #{3}
+2 [4 1 0 3 2] 5 1 {2 1.0, 3 1.0, 0 1.0, 1 0.0, 4 0.0} 4 1 #{3}
+user=>
+{2 1.0, 3 1.0, 0 1.0, 1 0.0, 4 0.0}
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 1 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)             (if (= v lastN)
+                                                                                                (last (find-neighbors v graph))
+                                                                                               lastN)))))))
+user=>
+#'user/graph-bfs
+(defn graph-bfs
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 1 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+user=>
+#'user/graph-bfs
+(let
+ [g {1 {:neigh #{0 4 3}},
+     0 {:neigh #{1 3}},
+     3 {:neigh #{0 1 2}},
+     4 {:neigh #{1}},
+     2 {:neigh #{3}}}]
+ (graph-bfs g 4))
+4 [] 0 1 {4 0.0} 1 1 #{1}
+1 [4] 1 1 {4 0.0} 1 1 #{0 3 4}
+0 [4 1] 2 2 {1 1.0, 4 0.0} 4 2 #{1 3}
+3 [4 1 0] 3 2 {0 2.0, 1 1.0, 4 0.0} 4 2 #{0 1 2}
+3 [4 1 0 3] 4 2 {3 2.0, 0 2.0, 1 1.0, 4 0.0} 4 2 #{0 1 2}
+2 [4 1 0 3] 4 2 {3 2.0, 0 2.0, 1 1.0, 4 0.0} 4 2 #{3}
+2 [4 1 0 3 2] 5 2 {2 2.0, 3 2.0, 0 2.0, 1 1.0, 4 0.0} 4 1 #{3}
+user=>
+{2 2.0, 3 2.0, 0 2.0, 1 1.0, 4 0.0}
+(defn distance
+  "Calculate the distances of one node to all the others"
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 1 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+CompilerException clojure.lang.ExceptionInfo: Call to clojure.core/defn did not conform to spec:
+In: [2] val: "(BFS)" fails spec: :clojure.core.specs.alpha/arg-list at: [:args :bs :arity-1 :args] predicate: vector?
+In: [2] val: "(BFS)" fails spec: :clojure.core.specs.alpha/args+body at: [:args :bs :arity-n :bodies] predicate: (cat :args :clojure.core.specs.alpha/arg-list :body (alt :prepost+body (cat :prepost map? :body (+ any?)) :body (* any?)))
+ #:clojure.spec.alpha{:problems ({:path [:args :bs :arity-1 :args], :pred clojure.core/vector?, :val "(BFS)", :via [:clojure.core.specs.alpha/defn-args :clojure.core.specs.alpha/args+body :clojure.core.specs.alpha/arg-list :clojure.core.specs.alpha/arg-list], :in [2]} {:path [:args :bs :arity-n :bodies], :pred (clojure.spec.alpha/cat :args :clojure.core.specs.alpha/arg-list :body (clojure.spec.alpha/alt :prepost+body (clojure.spec.alpha/cat :prepost clojure.core/map? :body (clojure.spec.alpha/+ clojure.core/any?)) :body (clojure.spec.alpha/* clojure.core/any?))), :va
+l "(BFS)", :via [:clojure.core.specs.alpha/defn-args :clojure.core.specs.alpha/args+body :clojure.core.specs.alpha/args+body], :in [2]}), :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2436 0x78027f8c "clojure.spec.alpha$regex_spec_impl$reify__2436@78027f8c"], :value (distance "Calculate the distances of one node to all the others" "(BFS)" [graph v] (loop [queue (conj clojure.lang.PersistentQueue/EMPTY v) visited [] res {v (float 0)} cpt 1 lastN (last (find-neighbors v graph))] (if (empty? queue) res (let [v (peek queue) neighbors (find-neighbors v graph) not-visited (filter (complement (fn* [p1__1914#] (visited? p1__1914# visited))) neighbors) new-queue (apply conj (pop queue) not-visited)] (println v visited (count visited) cpt res lastN (count queue) neighbors) (if (visited? v visited) (recur new-queue visited res cpt lastN) (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN) (inc cpt) cpt) (if (= v lastN) (last (find-neighbors v graph)) lastN))))))), :args (distance "Cal
+culate the distances of one node to all the others" "(BFS)" [graph v] (loop [queue (conj clojure.lang.PersistentQueue/EMPTY v) visited [] res {v (float 0)} cpt 1 lastN (last (find-neighbors v graph))] (if (empty? queue) res (let [v (peek queue) neighbors (find-neighbors v graph) not-visited (filter (complement (fn* [p1__1914#] (visited? p1__1914# visited))) neighbors) new-queue (apply conj (pop queue) not-visited)] (println v visited (count visited) cpt res lastN (count queue) neighbors) (if (visited? v visited) (recur new-queue visited res cpt lastN) (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN) (inc cpt) cpt) (if (= v lastN) (last (find-neighbors v graph)) lastN)))))))}, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:22:1) 
+(defn distance
+  "Calculate the distances of one node to all the others"
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 1 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+CompilerException clojure.lang.ExceptionInfo: Call to clojure.core/defn did not conform to spec:
+In: [2] val: "(BFS)" fails spec: :clojure.core.specs.alpha/arg-list at: [:args :bs :arity-1 :args] predicate: vector?
+In: [2] val: "(BFS)" fails spec: :clojure.core.specs.alpha/args+body at: [:args :bs :arity-n :bodies] predicate: (cat :args :clojure.core.specs.alpha/arg-list :body (alt :prepost+body (cat :prepost map? :body (+ any?)) :body (* any?)))
+ #:clojure.spec.alpha{:problems ({:path [:args :bs :arity-1 :args], :pred clojure.core/vector?, :val "(BFS)", :via [:clojure.core.specs.alpha/defn-args :clojure.core.specs.alpha/args+body :clojure.core.specs.alpha/arg-list :clojure.core.specs.alpha/arg-list], :in [2]} {:path [:args :bs :arity-n :bodies], :pred (clojure.spec.alpha/cat :args :clojure.core.specs.alpha/arg-list :body (clojure.spec.alpha/alt :prepost+body (clojure.spec.alpha/cat :prepost clojure.core/map? :body (clojure.spec.alpha/+ clojure.core/any?)) :body (clojure.spec.alpha/* clojure.core/any?))), :va
+l "(BFS)", :via [:clojure.core.specs.alpha/defn-args :clojure.core.specs.alpha/args+body :clojure.core.specs.alpha/args+body], :in [2]}), :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2436 0x78027f8c "clojure.spec.alpha$regex_spec_impl$reify__2436@78027f8c"], :value (distance "Calculate the distances of one node to all the others" "(BFS)" [graph v] (loop [queue (conj clojure.lang.PersistentQueue/EMPTY v) visited [] res {v (float 0)} cpt 1 lastN (last (find-neighbors v graph))] (if (empty? queue) res (let [v (peek queue) neighbors (find-neighbors v graph) not-visited (filter (complement (fn* [p1__1915#] (visited? p1__1915# visited))) neighbors) new-queue (apply conj (pop queue) not-visited)] (println v visited (count visited) cpt res lastN (count queue) neighbors) (if (visited? v visited) (recur new-queue visited res cpt lastN) (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN) (inc cpt) cpt) (if (= v lastN) (last (find-neighbors v graph)) lastN))))))), :args (distance "Cal
+culate the distances of one node to all the others" "(BFS)" [graph v] (loop [queue (conj clojure.lang.PersistentQueue/EMPTY v) visited [] res {v (float 0)} cpt 1 lastN (last (find-neighbors v graph))] (if (empty? queue) res (let [v (peek queue) neighbors (find-neighbors v graph) not-visited (filter (complement (fn* [p1__1915#] (visited? p1__1915# visited))) neighbors) new-queue (apply conj (pop queue) not-visited)] (println v visited (count visited) cpt res lastN (count queue) neighbors) (if (visited? v visited) (recur new-queue visited res cpt lastN) (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN) (inc cpt) cpt) (if (= v lastN) (last (find-neighbors v graph)) lastN)))))))}, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:22:1) 
+(defn distance
+  "(BFS)"
+  [graph v]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {v (float 0)} cpt 1 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+user=>
+#'user/distance
+(defn distance
+  "(BFS)"
+  [graph n]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v)
+         visited [] res {n (float 0)} cpt 1 lastN (last (find-neighbors v graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: v in this context, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:117:18) 
+(defn distance
+  "(BFS)"
+  [graph n]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY n)
+         visited [] res {n (float 0)} cpt 1 lastN (last (find-neighbors n graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+user=>
+#'user/distance
+(let
+ [g {1 {:neigh #{0 4 3}},
+     0 {:neigh #{1 3}},
+     3 {:neigh #{0 1 2}},
+     4 {:neigh #{1}},
+     2 {:neigh #{3}}}]
+ (distance g 2))
+2 [] 0 1 {2 0.0} 3 1 #{3}
+3 [2] 1 1 {2 0.0} 3 1 #{0 1 2}
+0 [2 3] 2 2 {3 1.0, 2 0.0} 2 2 #{1 3}
+1 [2 3 0] 3 2 {0 2.0, 3 1.0, 2 0.0} 2 2 #{0 3 4}
+1 [2 3 0 1] 4 2 {1 2.0, 0 2.0, 3 1.0, 2 0.0} 2 2 #{0 3 4}
+4 [2 3 0 1] 4 2 {1 2.0, 0 2.0, 3 1.0, 2 0.0} 2 2 #{1}
+4 [2 3 0 1 4] 5 2 {4 2.0, 1 2.0, 0 2.0, 3 1.0, 2 0.0} 2 1 #{1}
+user=>
+{4 2.0, 1 2.0, 0 2.0, 3 1.0, 2 0.0}
+(loop [queue   (conj clojure.lang.PersistentQueue/EMPTY n)
+         visited [] res {n (float 0)} cpt 1 lastN (last (find-neighbors n graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res (if (= v lastN)
+                                            (inc cpt)
+                                            cpt) (if (= v lastN))
+                                                  (last (find-neighbors v graph)
+                                                    lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: n in this context, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:117:18) 
+(defn distance
+  "(BFS)"
+  [graph n]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY n)
+         visited [] res {n (float 0)} cpt 1 lastN (last (find-neighbors n graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res cpt lastN)
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+user=>
+#'user/distance
+(defn distance
+  "(BFS)"
+  [graph n]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY n)
+         visited [] res {n (float 0)} cpt 1 lastN (last (find-neighbors n graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt  res lastN (count queue) neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res (if (= v lastN)
+                                             (inc cpt)
+                                            cpt)  (if (= v lastN)
+                                                    (last (find-neighbors n graph))
+                                                    lastN))
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+user=>
+#'user/distance
+(let
+ [g {1 {:neigh #{0 4 3}},
+     0 {:neigh #{1 3}},
+     3 {:neigh #{0 1 2}},
+     4 {:neigh #{1}},
+     2 {:neigh #{3}}}]
+ (distance g 2))
+2 [] 0 1 {2 0.0} 3 1 #{3}
+3 [2] 1 1 {2 0.0} 3 1 #{0 1 2}
+0 [2 3] 2 2 {3 1.0, 2 0.0} 2 2 #{1 3}
+1 [2 3 0] 3 2 {0 2.0, 3 1.0, 2 0.0} 2 2 #{0 3 4}
+1 [2 3 0 1] 4 2 {1 2.0, 0 2.0, 3 1.0, 2 0.0} 2 2 #{0 3 4}
+4 [2 3 0 1] 4 2 {1 2.0, 0 2.0, 3 1.0, 2 0.0} 2 2 #{1}
+4 [2 3 0 1 4] 5 2 {4 2.0, 1 2.0, 0 2.0, 3 1.0, 2 0.0} 2 1 #{1}
+user=>
+{4 2.0, 1 2.0, 0 2.0, 3 1.0, 2 0.0}
+(defn distance
+  "Calculate the distances of one node to all the others"
+  [graph n]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY n)
+         visited [] res {n (float 0)} cpt 1 lastN (last (find-neighbors n graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited (count visited) cpt lastN  neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res (if (= v lastN)
+                                             (inc cpt)
+                                            cpt)  (if (= v lastN)
+                                                    (last (find-neighbors n graph))
+                                                    lastN))
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+user=>
+#'user/distance
+(let
+ [g {1 {:neigh #{0 4 3}},
+     0 {:neigh #{1 3}},
+     3 {:neigh #{0 1 2}},
+     4 {:neigh #{1}},
+     2 {:neigh #{3}}}]
+ (distance g 2))
+2 [] 0 1 3 #{3}
+3 [2] 1 1 3 #{0 1 2}
+0 [2 3] 2 2 2 #{1 3}
+1 [2 3 0] 3 2 2 #{0 3 4}
+1 [2 3 0 1] 4 2 2 #{0 3 4}
+4 [2 3 0 1] 4 2 2 #{1}
+4 [2 3 0 1 4] 5 2 2 #{1}
+user=>
+{4 2.0, 1 2.0, 0 2.0, 3 1.0, 2 0.0}
+(defn distance
+  "Calculate the distances of one node to all the others"
+  [graph n]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY n)
+         visited [] res {n (float 0)} cpt 1 lastN (last (find-neighbors n graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited  cpt lastN  neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res (if (= v lastN)
+                                             (inc cpt)
+                                            cpt)  (if (= v lastN)
+                                                    (last (find-neighbors n graph))
+                                                    lastN))
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+user=>
+#'user/distance
+(let
+ [g {1 {:neigh #{0 4 3}},
+     0 {:neigh #{1 3}},
+     3 {:neigh #{0 1 2}},
+     4 {:neigh #{1}},
+     2 {:neigh #{3}}}]
+ (distance g 2))
+2 [] 1 3 #{3}
+3 [2] 1 3 #{0 1 2}
+0 [2 3] 2 2 #{1 3}
+1 [2 3 0] 2 2 #{0 3 4}
+1 [2 3 0 1] 2 2 #{0 3 4}
+4 [2 3 0 1] 2 2 #{1}
+4 [2 3 0 1 4] 2 2 #{1}
+user=>
+{4 2.0, 1 2.0, 0 2.0, 3 1.0, 2 0.0}
+(defn distance
+  "Calculate the distances of one node to all the others"
+  [graph n]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY n)
+         visited [] res {n (float 0)} cpt 1 lastN (last (find-neighbors n graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited  cpt lastN  neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res (if (= v lastN)
+                                             (inc cpt)
+                                            cpt)  (if (= v lastN)
+                                                    (last (find-neighbors n graph))
+                                                    lastN))
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+user=>
+#'user/distance
+(reverse (sorted-set #{1 9 824}))
+user=>
+(#{1 9 824})
+(sorted-set > #{1 9 824})
+ClassCastException clojure.lang.PersistentHashSet cannot be cast to java.lang.Comparable  clojure.lang.Util.compare (Util.java:153)
+(sorted-set-by < #{1 9 824})
+user=>
+#{#{1 9 824}}
+(sorted-set-by > #{1 9 824})
+user=>
+#{#{1 9 824}}
+(defn las-neigh
+  [sett coll v]
+  (loop [c sett]
+    (if (seq c)
+      (if (not (visited? (last c) coll))
+        (last c)
+       (recur (bulast c)))
+      v)))
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: bulast in this context, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:107:15) 
+(defn las-neigh
+  [sett coll v]
+  (loop [c sett]
+    (if (seq c)
+      (if (not (visited? (last c) coll))
+        (last c)
+       (recur (butast c)))
+      v)))
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: butast in this context, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:107:15) 
+(defn las-neigh
+  [sett coll v]
+  (loop [c sett]
+    (if (seq c)
+      (if (not (visited? (last c) coll))
+        (last c)
+       (recur (butlast c)))
+      v)))
+user=>
+#'user/las-neigh
+This command requires you to position the cursor on a Clojure var.
+(let
+ [g {1 {:neigh #{0 4 3}},
+     0 {:neigh #{1 3}},
+     3 {:neigh #{0 1 2}},
+     4 {:neigh #{1}},
+     2 {:neigh #{3}}}]
+ (distance g 2))
+2 [] 1 3 #{3}
+3 [2] 1 3 #{0 1 2}
+0 [2 3] 2 2 #{1 3}
+1 [2 3 0] 2 2 #{0 3 4}
+1 [2 3 0 1] 2 2 #{0 3 4}
+4 [2 3 0 1] 2 2 #{1}
+4 [2 3 0 1 4] 2 2 #{1}
+user=>
+{4 2.0, 1 2.0, 0 2.0, 3 1.0, 2 0.0}
+(last-neigh #{0 1 2} [2] 3)
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: last-neigh in this context, compiling:(/home/adrien/Documents/3I020/GrapheProj/graphcljskel-master/src/graphclj/centrality.clj:111:1) 
+(defn last-neigh
+  [sett coll v]
+  (loop [c sett]
+    (if (seq c)
+      (if (not (visited? (last c) coll))
+        (last c)
+       (recur (butlast c)))
+      v)))
+user=>
+#'user/last-neigh
+(last-neigh #{0 1 2} [2] 3)
+user=>
+1
+(defn distance
+  "Calculate the distances of one node to all the others"
+  [graph n]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY n)
+         visited [] res {n (float 0)} cpt 1 lastN (last (find-neighbors n graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited  cpt lastN  neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res (if (= v lastN)
+                                             (inc cpt)
+                                            cpt)  (if (= v lastN)
+                                                    (last (find-neighbors v graph))
+                                                    lastN))
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last (find-neighbors v graph))
+                                                                                    lastN)))))))
+user=>
+#'user/distance
+(let
+ [g {1 {:neigh #{0 4 3}},
+     0 {:neigh #{1 3}},
+     3 {:neigh #{0 1 2}},
+     4 {:neigh #{1}},
+     2 {:neigh #{3}}}]
+ (distance g 2))
+2 [] 1 3 #{3}
+3 [2] 1 3 #{0 1 2}
+0 [2 3] 2 2 #{1 3}
+1 [2 3 0] 2 2 #{0 3 4}
+1 [2 3 0 1] 2 2 #{0 3 4}
+4 [2 3 0 1] 2 2 #{1}
+4 [2 3 0 1 4] 2 2 #{1}
+user=>
+{4 2.0, 1 2.0, 0 2.0, 3 1.0, 2 0.0}
+(defn distance
+  "Calculate the distances of one node to all the others"
+  [graph n]
+  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY n)
+         visited [] res {n (float 0)} cpt 1 lastN (last (find-neighbors n graph))]
+    (if (empty? queue) res
+        (let [v           (peek queue)
+              neighbors   (find-neighbors v graph)
+              not-visited (filter (complement #(visited? % visited)) neighbors)
+              new-queue   (apply conj (pop queue) not-visited)]
+          (println v visited  cpt lastN  neighbors)
+          (if (visited? v visited)
+            (recur new-queue visited  res (if (= v lastN)
+                                             (inc cpt)
+                                            cpt)  (if (= v lastN)
+                                                    (last-neigh (find-neighbors v graph) visited v)
+                                                    lastN))
+            (recur new-queue (conj visited v) (merge {v (float cpt)} res) (if (= v lastN)
+                                                                            (inc cpt)
+                                                                            cpt)  (if (= v lastN)
+                                                                                    (last-neigh (find-neighbors v graph) visited v)
+                                                                                    lastN)))))))
+user=>
+#'user/distance
+(let
+ [g {1 {:neigh #{0 4 3}},
+     0 {:neigh #{1 3}},
+     3 {:neigh #{0 1 2}},
+     4 {:neigh #{1}},
+     2 {:neigh #{3}}}]
+ (distance g 2))
+2 [] 1 3 #{3}
+3 [2] 1 3 #{0 1 2}
+0 [2 3] 2 1 #{1 3}
+1 [2 3 0] 2 1 #{0 3 4}
+1 [2 3 0 1] 3 4 #{0 3 4}
+4 [2 3 0 1] 3 4 #{1}
+4 [2 3 0 1 4] 4 4 #{1}
+user=>
+{4 3.0, 1 2.0, 0 2.0, 3 1.0, 2 0.0}
+(let
+ [g {1 {:neigh #{0 4 3}},
+     0 {:neigh #{1 3}},
+     3 {:neigh #{0 1 2}},
+     4 {:neigh #{1}},
+     2 {:neigh #{3}}}]
+ (distance g 4))
+4 [] 1 1 #{1}
+1 [4] 1 1 #{0 3 4}
+0 [4 1] 2 3 #{1 3}
+3 [4 1 0] 2 3 #{0 1 2}
+3 [4 1 0 3] 3 2 #{0 1 2}
+2 [4 1 0 3] 3 2 #{3}
+2 [4 1 0 3 2] 4 2 #{3}
+user=>
+{2 3.0, 3 2.0, 0 2.0, 1 1.0, 4 0.0}
+(defn closeness
+  "Returns the closeness for node n in graph g"
+  [g n]
+  (reduce + (map (fn [x]  (/ 1 x)) (filter (fn [x] (not (zero? x))) (vals (distance g n))))))
+user=>
+#'user/closeness
+(defn closeness-all
+  "Returns the closeness for all nodes in graph g"
+  [g]
+  (loop [s g res{}]
+    (if (seq s)
+      (recur (rest s) (assoc res (first (first s)) (merge (second (first s)) {:close (closeness g (first (first s)))})))
+      res)))
+user=>
+#'user/closeness-all
+(let
+      [g {1 {:neigh #{0 4 3}},}]
+      0 {:neigh #{1 3}},
+      3 {:neigh #{0 1 2}},
+      4 {:neigh #{1}},
+      2 {:neigh #{3}}
+      (closeness-all g))
+1 [] 1 4 #{0 3 4}
+0 [1] 1 4 #{}
+3 [1 0] 1 4 #{}
+4 [1 0 3] 1 4 #{}
+user=>
+{1 {:neigh #{0 4 3}, :close 3.0}}
+--------------------
+(def c {:b 1 , :c 2})
