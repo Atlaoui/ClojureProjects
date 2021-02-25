@@ -1,0 +1,690 @@
+REPL Instructions
+
+Code can be entered at the bottom and executed by pressing shift+enter.
+
+Try it now by typing (+ 1 1) in the bottom section and pressing shift+enter.
+
+Working in another Clojure file and sending forms to the REPL is the most efficient way to work. Use the following key bindings to send code to the REPL. See the settings for more keybindings.
+
+ctrl-alt-, then b
+Execute block. Finds the block of Clojure code your cursor is in and executes that.
+
+ctrl-alt-, s
+Executes the selection. Sends the selected text to the REPL.
+
+You can disable this help text in the settings.
+Atom Ink does not appear to be installed. Install it to get a better REPL experience.
+Starting REPL with lein in /home/adrien/Documents/3I020/Sudoku/mrsudoku-project-master
+nREPL server started on port 40089 on host 127.0.0.1 - nrepl://127.0.0.1:40089
+Refreshing code...
+No user namespace defined. Defaulting to clojure.tools.namespace.repl/refresh.
+
+:reloading (figwheel.main.css-reload re-frame.db re-frame.loggers re-frame.registrar re-frame.trace re-frame.interceptor re-frame.cofx re-frame.utils re-frame.subs re-frame.std-interceptors re-frame.events re-frame.router re-frame.fx re-frame.core mrsudoku.css cljs.stacktrace figwheel.repl figwheel.core figwheel.main fipp.deque fipp.engine fipp.visit fipp.edn fipp.clojure mrsudoku.core)
+2019-05-04 10:08:26.807:INFO::nRepl-session-5626e5de-d838-483c-b757-738bdedbf548: Logging initialized @7785ms
+Refresh complete
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+Syntax error compiling at (generate.cljs:30:6).
+Unable to resolve symbol: mk-cell in this context
+(defn mk-cell
+  "Create a new cell."
+  ([] {:status :empty})
+  ([v] {:status :init, :value v})
+  ([st v] {:status st, :value v}))
+user=>
+#'user/mk-cell
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+user=>
+#'user/generate-base-grid
+(def grid (generate-base-grid))
+user=>
+#'user/grid
+grid
+user=>
+[[[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]] [[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]] [[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]]]
+(first grid)
+user=>
+[[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]]
+(map println (first grid))
+[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]
+[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]
+[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]
+user=>
+(nil nil nil)
+(map println (ffirst grid))
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+user=>
+(nil nil nil nil nil nil nil nil nil)
+(map (fn [x] (map println x)) (first grid))
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+{:status :empty}
+user=>
+((nil nil nil nil nil nil nil nil nil) (nil nil nil nil nil nil nil nil nil) (nil nil nil nil nil nil nil nil nil))
+(map (fn [x] (apply println x)) (first grid))
+{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}
+{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}
+{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}
+user=>
+(nil nil nil)
+(map (fn [x] (apply println x))  grid)
+[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]
+[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]
+[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]
+user=>
+(nil nil nil)
+(map (fn [x] (apply println x)) (first grid))
+{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}
+{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}
+{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}
+user=>
+(nil nil nil)
+(into [] (map (fn [x] (apply println x)) (first grid)))
+{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}
+{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}
+{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}
+user=>
+[nil nil nil]
+(into [] (map (fn [x] (apply ident? x)) (first grid)))
+Execution error (ArityException) at user/eval15357$fn (form-init438034633310987852.clj:1).
+Wrong number of args (9) passed to: clojure.core/ident?
+(into [] (map (fn [x] (apply identity x)) (first grid)))
+Execution error (ArityException) at user/eval15382$fn (form-init438034633310987852.clj:1).
+Wrong number of args (9) passed to: clojure.core/identity
+(into [] (map (fn [x] (map identity x)) (first grid)))
+user=>
+[({:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}) ({:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}) ({:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty})]
+(into [] (map (fn [x] (into [](map identity x))) (first grid)))
+user=>
+[[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]]
+(first grid)
+user=>
+[[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]]
+(mk-cell :set 5)
+user=>
+{:status :set, :value 5}
+(def t (mk-cell :set 5))
+user=>
+#'user/t
+t
+user=>
+{:status :set, :value 5}
+(:value t)
+user=>
+5
+(mk-cell (:value t))
+user=>
+{:status :init, :value 5}
+(mk-cell nil)
+user=>
+{:status :init, :value nil}
+(:value (mk-cell ))
+user=>
+nil
+(defn init-cell
+  "for a given cell well return a cell if there is a value in init state"
+  [cell]
+  (if (:value cell)
+    (mk-cell (:value cell))
+    cell))
+user=>
+#'user/init-cell
+(into [] (map (fn [x] (into [](map init-cell x))) (first grid)))
+user=>
+[[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]]
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+Syntax error compiling at (generate.cljs:30:6).
+Unable to resolve symbol: mk-cell in this context
+(defn mk-cell
+  "Create a new cell."
+  ([] {:status :empty})
+  ([v] {:status :init, :value v})
+  ([st v] {:status st, :value v}))
+user=>
+#'user/mk-cell
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell :set 5) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell :set 6) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+Syntax error reading source at (REPL:35:26).
+Invalid token: symbol:
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+Syntax error compiling at (generate.cljs:30:6).
+Unable to resolve symbol: mk-cell in this context
+(defn mk-cell
+  "Create a new cell."
+  ([] {:status :empty})
+  ([v] {:status :init, :value v})
+  ([st v] {:status st, :value v}))
+user=>
+#'user/mk-cell
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell :set 5) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell :set 6) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+Syntax error reading source at (REPL:35:26).
+Invalid token: symbol:
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+Syntax error compiling at (generate.cljs:30:6).
+Unable to resolve symbol: mk-cell in this context
+(defn mk-cell
+  "Create a new cell."
+  ([] {:status :empty})
+  ([v] {:status :init, :value v})
+  ([st v] {:status st, :value v}))
+user=>
+#'user/mk-cell
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell :set 5) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell :set 6) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+Syntax error reading source at (REPL:35:26).
+Invalid token: symbol:
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell :set 5) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell :set 6)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+user=>
+#'user/generate-base-grid
+(into [] (map (fn [x] (into [](map init-cell x))) (first grid)))
+user=>
+[[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]]
+(def grid (generate-base-grid))
+user=>
+#'user/grid
+(into [] (map (fn [x] (into [](map init-cell x))) (first grid)))
+user=>
+[[{:status :init, :value 5} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :init, :value 6}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]]
+(defn set-all-to-init
+  "set all the value to init in a given board"
+  [board]
+  (loop [b board res []]
+    (if (seq b)
+      (recur (rest b) (conj res (into [] (map (fn [x] (into [](map init-cell x))) (first b))))))))
+user=>
+#'user/set-all-to-init
+(set-all-to-init grid)
+user=>
+nil
+(defn set-all-to-init
+  "set all the value to init in a given board"
+  [board]
+  (loop [b board res []]
+    (if (seq b)
+      (recur (rest b) (conj res (into [] (map (fn [x] (into [](map init-cell x))) (first b))))))
+    res))
+Syntax error (UnsupportedOperationException) compiling recur at (generate.cljs:27:7).
+Can only recur from tail position
+(defn set-all-to-init
+  "set all the value to init in a given board"
+  [board]
+  (loop [b board res []]
+    (if (seq b)
+      (recur (rest b) (conj res (into [] (map (fn [x] (into [](map init-cell x))) (first b)))))
+     res)))
+user=>
+#'user/set-all-to-init
+(set-all-to-init grid)
+user=>
+[[[{:status :init, :value 5} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :init, :value 6}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]] [[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]] [[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]]]
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+user=>
+#'user/generate-base-grid
+(def grid generate-base-grid)
+user=>
+#'user/grid
+(= (set-all-to-init grid) grid)
+Execution error (IllegalArgumentException) at user/set-all-to-init (form-init438034633310987852.clj:26).
+Don't know how to create ISeq from: user$generate_base_grid
+(set-all-to-init grid)
+Execution error (IllegalArgumentException) at user/set-all-to-init (form-init438034633310987852.clj:26).
+Don't know how to create ISeq from: user$generate_base_grid
+grid
+user=>
+#object[user$generate_base_grid 0x361706c "user$generate_base_grid@361706c"]
+(defn generate-base-grid
+  "generate a white board"
+  []
+  [[;; row 1
+    [(mk-cell) (mk-cell ) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]
+    [(mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)
+     (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 2
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell ) (mk-cell)
+      (mk-cell ) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)]],
+    [;; row 3
+     [(mk-cell) (mk-cell ) (mk-cell)
+       (mk-cell) (mk-cell) (mk-cell)
+        (mk-cell) (mk-cell) (mk-cell)]
+     [(mk-cell) (mk-cell) (mk-cell)
+      (mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]
+     [(mk-cell ) (mk-cell ) (mk-cell)
+      (mk-cell) (mk-cell) (mk-cell)
+      (mk-cell) (mk-cell ) (mk-cell)]]])
+user=>
+#'user/generate-base-grid
+(def grid (generate-base-grid))
+user=>
+#'user/grid
+gird
+Syntax error compiling at (generate.cljs:1:1096).
+Unable to resolve symbol: gird in this context
+gird
+Syntax error compiling at (generate.cljs:1:1096).
+Unable to resolve symbol: gird in this context
+(def grid (generate-base-grid))
+user=>
+#'user/grid
+gird
+Syntax error compiling at (generate.cljs:1:1096).
+Unable to resolve symbol: gird in this context
+(def g (generate-base-grid))
+user=>
+#'user/g
+g
+user=>
+[[[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]] [[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]] [[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]]]
+(= (set-all-to-init g) g)
+user=>
+true
+(rand)
+user=>
+0.9539712367268388
+(rand)
+user=>
+0.1390859772583013
+(rand)
+user=>
+0.08699117572419934
+(rand)
+user=>
+0.9763693834252797
+(defn clear-cell
+  "clear cell with a random chance test "
+  [cell]
+  (if (and (:value cell) (< (rand) 0.5)
+          (g/mk-cell))
+    cell))
+Syntax error compiling at (generate.cljs:42:11).
+No such namespace: g
+(defn clear-cell
+  "clear cell with a random chance test "
+  [cell]
+  (if (and (:value cell) (< (rand) 0.5)
+          (mk-cell))
+    cell))
+user=>
+#'user/clear-cell
+(defn extract-value
+  "extract randomly a value from the board"
+  [board]
+  (loop [b board res []]
+    (if (seq b)
+      (recur (rest b) (conj res (into [] (map (fn [x] (into [](map init-cell x))) (first b)))))
+     res)))
+user=>
+#'user/extract-value
+(extract-value g)
+user=>
+[[[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]] [[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]] [[{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}] [{:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty} {:status :empty}]]]
+(defn isUnique?
+  "teste if stil unique solution"
+  [grid]
+ grid)
+user=>
+#'user/isUnique?
+--------------------
+(def graph {{22 #{ }} ,{33 #{2}}, {43 #{1}} ,{42 #{1}}} )

@@ -1,7 +1,7 @@
+(ns mrsudoku.model.grid
+  (:require [clojure.string :as string]
+            [mrsudoku.utils :refer [concatv]]))
 
-(ns mrsudoku.grid
-  (:use midje.sweet)
-  (:require [mrsudoku.utils :refer [concatv]]))
 
 (defn mk-cell
   "Create a new cell."
@@ -13,20 +13,6 @@
   (case (:status cell)
     (:init :set :solved :conflict) (:value cell)
     nil))
-
-(fact
- (cell-value {:status :init, :value 5}) => 5)
-
-(fact
- (cell-value {:status :empty}) => nil)
-
-
-;;; Remark: cell status can be :
-;;;   - :init value set at initialization
-;;;   - :empty
-;;;   - :set value set by the player
-;;;   - :conflict  value is conflicting
-;;;   - :solved    value is solved by a solver algorithm
 
 (def ^:private sudoku-grid
   [[;; row 1
@@ -61,6 +47,7 @@
      (mk-cell) (mk-cell 7) (mk-cell 9)]]])
 
 
+
 (defn cell
   "Get the cell at coordinates `(cx,cy)`
 with `cx` the column number and `cy` the row number."
@@ -78,52 +65,6 @@ with `cx` the column number and `cy` the row number."
       ;(println (str "block=" block))
       (block cell-ref))))
 
-(fact (cell sudoku-grid 1 1) => {:status :init, :value 5})
-
-(fact (cell sudoku-grid 2 1) => {:status :init, :value 3})
-
-(fact (cell sudoku-grid 3 1) => {:status :empty})
-
-(fact (cell sudoku-grid 1 2) => {:status :init, :value 6})
-
-(fact (cell sudoku-grid 5 2) => {:status :init, :value 9})
-
-(fact (cell sudoku-grid 5 6) => {:status :init, :value 2})
-
-(fact (cell sudoku-grid 9 9) => {:status :init, :value 9})
-
-(defn mkvar [prefix num]
-    (keyword (str prefix num)))
-
-(defn generate-doms
-  [cells x y]
-  (if (= (:status cells) :init)
-    [(mkvar "var" (str x y)) #{(:value cells)}]
-    [(mkvar "var" (str x y)) (into #{} (range 1 10))]))
-
-(generate-doms (cell sudoku-grid 3 1) 3 1)
-
-(defn sudoku-grid-doms-aux
-  [grid x res]
-  (loop [i 1, res res]
-    (if (< i 10)
-      (let [[var,doms] (generate-doms (cell grid x i) x i)]
-        (recur (inc i) (assoc res var doms)))
-      res)))
-
-(sudoku-grid-doms-aux sudoku-grid 1 {})
-
-(defn sudoku-grid-doms
-  [grid]
-  (loop [i 1, res {}]
-    (if (< i 10)
-      (let [res' (sudoku-grid-doms-aux grid i res)]
-        (recur (inc i) res'))
-      res)))
-
-(sudoku-grid-doms sudoku-grid)
-
-
 (defn change-cell
   "Change the `grid` cell at coordinates `(cx,cy)`
   with `cx` the column number and `cy` the row number,
@@ -138,24 +79,12 @@ with `cx` the column number and `cy` the row number."
         cell-ref (+ (* cell-y 3) cell-x)]
     (update-in grid [block-y block-x cell-ref] (fn [_] cell))))
 
-(fact
- (cell (change-cell sudoku-grid 1 1 {:status :set, :value 4}) 1 1)
- => {:status :set, :value 4})
-
 (defn cell->str [cell]
   (condp = (:status cell)
     :init (str " " (:value cell) " ")
     :empty " . "
     :set (str "[" (:value cell) "]")
     :conflict (str "!" (:value cell) "!")))
-
-(fact
- (cell->str (cell sudoku-grid 1 1))
- => " 5 ")
-
-(fact
- (cell->str (cell sudoku-grid 1 3))
- => " . ")
 
 (defn block
   "Get the #`b` block of the `grid`."
@@ -164,31 +93,6 @@ with `cx` the column number and `cy` the row number."
   (let [row (quot (- b 1) 3)
         blk (rem (- b 1) 3)]
     (nth (nth grid row) blk)))
-
-(fact
- (block sudoku-grid 1)
- => [{:status :init, :value 5}
-     {:status :init, :value 3}
-     {:status :empty}
-     {:status :init, :value 6}
-     {:status :empty}
-     {:status :empty}
-     {:status :empty}
-     {:status :init, :value 9}
-     {:status :init, :value 8}])
-
-(fact
- (block sudoku-grid 8)
- => [{:status :empty}
-     {:status :empty}
-     {:status :empty}
-     {:status :init, :value 4}
-     {:status :init, :value 1}
-     {:status :init, :value 9}
-     {:status :empty}
-     {:status :init, :value 8}
-     {:status :empty}])
-
 
 (defn reduce-block
   "Reduce the `b`-th `block` of a sudoku grid with a function taking 4
@@ -213,20 +117,6 @@ with `cx` the column number and `cy` the row number."
                                          (first cells)))))]
           (recur (+ yoffset 1) nindex ncells nacc))))))
 
-(fact
- (reduce-block (fn [acc index cx cy cell]
-                 (conj acc [index, [cx,cy]])) [] (block sudoku-grid 1) 1)
- => [[1 [1 1]] [2 [2 1]] [3 [3 1]] [4 [1 2]] [5 [2 2]] [6 [3 2]] [7 [1 3]] [8 [2 3]] [9 [3 3]]])
-
-(fact
- (reduce-block (fn [acc index cx cy cell]
-                 (conj acc (cell-value cell))) [] (block sudoku-grid 1) 1)
- => [5 3 nil 6 nil nil nil 9 8])
-
-(fact
- (reduce-block (fn [acc index cx cy cell]
-                 (conj acc [cx,cy])) [] (block sudoku-grid 8) 8)
- => [[4 7] [5 7] [6 7] [4 8] [5 8] [6 8] [4 9] [5 9] [6 9]])
 
 (defn do-block
   "Do the effects in function `f!` while traversing the `b`-th `block`
@@ -237,12 +127,6 @@ with `cx` the column number and `cy` the row number."
   (reduce-block (fn [_ index cx cy cell]
                   (f! index cx cy cell)) nil block b))
 
-(fact
- (let [cnt (atom 0)]
-   (do-block (fn [index cx cy cell]
-               (when (= (:status cell) :empty)
-                 (swap! cnt #(+ % 1)))) (block sudoku-grid 1) 1)
-   @cnt) => 4)
 
 (defn block-row
   "Get the #`r` row in the `grid`."
@@ -250,18 +134,6 @@ with `cx` the column number and `cy` the row number."
   {:pre [(<= 1 r 3)]}
   (let [base (* (- r 1) 3)]
     [(nth block base) (nth block (+ base 1)) (nth block (+ base 2))]))
-
-(fact
- (block-row (nth (nth sudoku-grid 0) 0) 1)
- => [{:status :init, :value 5} {:status :init, :value 3} {:status :empty}])
-
-(fact
- (block-row (nth (nth sudoku-grid 0) 0) 2)
- => [{:status :init, :value 6} {:status :empty} {:status :empty}])
-
-(fact
- (block-row (nth (nth sudoku-grid 0) 0) 3)
- => [{:status :empty} {:status :init, :value 9} {:status :init, :value 8}])
 
 (defn row
   "Get the #`r` row in the `grid`."
@@ -274,37 +146,8 @@ with `cx` the column number and `cy` the row number."
              (block-row (nth blocks 1) row-r)
              (block-row (nth blocks 2) row-r))))
 
-(fact
- (row sudoku-grid 1)
- => [{:status :init, :value 5}
-     {:status :init, :value 3}
-     {:status :empty}
-     {:status :empty}
-     {:status :init, :value 7}
-     {:status :empty}
-     {:status :empty}
-     {:status :empty}
-     {:status :empty}])
-
-(fact
- (row sudoku-grid 7)
- => [{:status :empty}
-     {:status :empty}
-     {:status :empty}
-     {:status :empty}
-     {:status :empty}
-     {:status :empty}
-     {:status :init, :value 2}
-     {:status :init, :value 8}
-     {:status :empty}])
-
 (defn row->str [row]
-  (clojure.string/join " " (map cell->str row)))
-
-
-(fact
- (row->str (row sudoku-grid 1))
- => " 5   3   .   .   7   .   .   .   . ")
+  (string/join " " (map cell->str row)))
 
 (defn rows
   "Fetch all the rows of a sudoku `grid`."
@@ -312,15 +155,8 @@ with `cx` the column number and `cy` the row number."
   (for [i (range 1 10)]
     (row grid i)))
 
-(fact
- (count (rows sudoku-grid)) => 9)
-
 (defn grid->str [grid]
-  (clojure.string/join "\n" (map row->str (rows grid))))
-
-(fact
- (grid->str sudoku-grid)
- => " 5   3   .   .   7   .   .   .   . \n 6   .   .   1   9   5   .   .   . \n .   9   8   .   .   .   .   6   . \n 8   .   .   .   6   .   .   .   3 \n 4   .   .   8   .   3   .   .   1 \n 7   .   .   .   2   .   .   .   6 \n .   .   .   .   .   .   2   8   . \n .   .   6   4   1   9   .   .   5 \n .   .   .   .   8   .   .   7   9 ")
+  (string/join "\n" (map row->str (rows grid))))
 
 (defn col
   "Get the #`c` column of the `grid`."
@@ -328,31 +164,6 @@ with `cx` the column number and `cy` the row number."
   {:pre [(<= 1 c 9)]}
   (into [] (for [cy (range 1 10)]
              (cell grid c cy))))
-
-(fact
- (col sudoku-grid 1)
- => [{:status :init, :value 5}
-     {:status :init, :value 6}
-     {:status :empty}
-     {:status :init, :value 8}
-     {:status :init, :value 4}
-     {:status :init, :value 7}
-     {:status :empty}
-     {:status :empty}
-     {:status :empty}])
-
-(fact
- (col sudoku-grid 8)
- => [{:status :empty}
-     {:status :empty}
-     {:status :init, :value 6}
-     {:status :empty}
-     {:status :empty}
-     {:status :empty}
-     {:status :init, :value 8}
-     {:status :empty}
-     {:status :init, :value 7}])
-
 
 (defn reduce-grid
   "Reduce the whole `grid` of a sudoku with a function taking 4
@@ -368,15 +179,6 @@ with `cx` the column number and `cy` the row number."
                      (recur (+ cx 1) (f acc cx cy (cell grid cx cy)))))]
         (recur (+ cy 1) nacc)))))
 
-
-(fact ;; counting empty cells
- (reduce-grid (fn [acc cx cy cell]
-                (if (= (:status cell) :empty)
-                  (+ acc 1)
-                  acc)) 0 sudoku-grid)
- => 51)
-
-
 (defn do-grid
   "Do the effects in function `f!` while traversing the `grid` of a
   sudoku. The function `f!` takes 3 parameters: `cx, cy` for the cell
@@ -384,12 +186,3 @@ with `cx` the column number and `cy` the row number."
   [f! grid]
   (reduce-grid (fn [_ cx cy cell]
                  (f! cx cy cell)) nil grid))
-
-(fact
- (let [cnt (atom 0)]
-   (do-grid (fn [cx cy cell]
-              (when (= (:status cell) :empty)
-                (swap! cnt #(+ % 1)))) sudoku-grid)
-   @cnt) => 51)
-
-
